@@ -225,6 +225,15 @@ $(document).ready(function () {
                 $('.nav-bar-fixed').css('position', 'fixed');
                 $('.hamburger-menu div').css('border-color', 'black');
                 $('.nav-bar').css('top', '-20px');
+                $('.left-nav-bar img:first-child').css('display','none');
+                $('.left-nav-bar img:nth-child(2)').css('display','block');
+                $('.left-nav-bar img:nth-child(2)').css('position','relative');
+
+                $('.left-nav-bar img:nth-child(2)').css('left','60px');
+
+
+                console.log();
+                
                 // $('.nav-bar-fixed').css('transition',' top 1s linear ')
 
             }
@@ -233,7 +242,12 @@ $(document).ready(function () {
             if ($(document).scrollTop() >= 300) {
                 $('.nav-bar').addClass('nav-bar-fixed');
                 $('.hamburger-menu div').css('border-color', 'black');
-                $('.nav-bar').css('top', '-20px')
+                $('.nav-bar').css('top', '-20px');
+                $('.left-nav-bar img:nth-child(2)').css('display','block');
+                $('.left-nav-bar img:nth-child(2)').css('position','relative');
+
+                $('.left-nav-bar img:nth-child(2)').css('left','60px');
+
                 // $('.nav-bar-fixed').css('transition','top 1s linear ')
 
             }
@@ -242,6 +256,10 @@ $(document).ready(function () {
                 $('.nav-bar').css('position', 'absolute');
                 $('.nav-bar').css('top', '0px')
                 $('.hamburger-menu div').css('border-color', 'white');
+                $('.left-nav-bar img:nth-child(2)').css('display','none');
+                $('.left-nav-bar img:first-child').css('display','block');
+
+
                 // $('.nav-bar-fixed').css('transition','top 1s linear ')
 
             }
@@ -527,8 +545,30 @@ $(document).ready(function () {
             $(this).addClass('footer-passive');
         })
     }
-    
+    function lastFunction(){
+        let sections=[$('#slider'),$('#cup'),$('#pricing'),$('#port'),$('#blog'),$('#contact')];
+        let index;
+       $(document).on('click','.right-nav-bar ul li',function(){
+           index=parseInt($(this).attr('id'))-1000;
+           $('html, body').animate({
+            scrollTop: $(sections[index]).offset().top
+        }, 2000);
+           
+
+       })
+       $(document).on('click','.menu-lists ul li',function(){
+        index=parseInt($(this).attr('id'))-100;
+        $('html, body').animate({
+         scrollTop: $(sections[index]).offset().top
+     }, 2000);
         
+
+    })
+
+        
+    }
+    
+        lastFunction();
     navBarActiveAdder();
     hambMenuAnimation();
     hambMenuReturnAnimation();
